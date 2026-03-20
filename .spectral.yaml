@@ -1,10 +1,12 @@
 rules:
-  paths-kebab-case:
-    description: Paths should be kebab-case.
-    message: "{{property}} should be kebab-case (lower-case and separated with hyphens)"
-    severity: warn
-    given: $.paths[*]~
+  apidog-field-is-boolean:
+    description: The root must have an "apidog" field which is a boolean (true or false).
+    message: The "apidog" field must be a boolean value.
+    severity: error
+    given: $
     then:
-      function: pattern
+      field: apidog
+      function: schema
       functionOptions:
-        match: "^(\\/|[a-z0-9-.]+|{[a-zA-Z0-9_]+})+$"
+        schema:
+          type: boolean
