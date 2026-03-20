@@ -59,3 +59,4 @@ components:
         - id
         - name
         - email
+security: []
