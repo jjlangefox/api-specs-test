@@ -1,5 +1,5 @@
 openapi: 3.0.3
-apidog: "ddd"
+apidog: true
 info:
   title: Orders API
   version: 1.0.0
