@@ -1,4 +1,5 @@
 openapi: 3.0.3
+apidog: true
 info:
   title: Broken User API
   version: 1.0.0
@@ -79,5 +80,3 @@ components:
         - user
         - product
         - quantity
-    InvalidRef:
-      $ref: '#/components/schemas/NonExistent'  # invalid reference
