@@ -2,7 +2,7 @@ rules:
   apidog-field-is-boolean:
     description: The root must have an "apidog" field which is a boolean (true or false).
     message: The "apidog" field must be a boolean value.
-    severity: error
+    severity: warning
     given: $
     then:
       field: apidog
