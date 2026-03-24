@@ -1,82 +1,11 @@
-openapi: 3.0.3
-apidog: true
-info:
-  title: Broken User API
-  version: 1.0.0
-servers:
-  - url: https://api.example.com
-paths:
-  /users:
-    get:
-      summary: Get all users
-      responses:
-        '200':
-          description: List of users
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
-    post:
-      summary: Create a new user
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-      responses:
-        '201':
-          description: User created
-  /users/{userId:
-    get:
-      summary: Get user by ID
-      parameters:
-        - name: userId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: User details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-components:
-  schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'  # circular reference
-      required:
-        - id
-        - name
-        - email
-    Order:
-      type: object
-      properties:
-        id:
-          type: integer   # conflicts with User reference expecting string
-        user:
-          $ref: '#/components/schemas/User'  # circular
-        product:
-          type: string
-        quantity:
-          type: string  # intentional type mismatch
-      required:
-        - id
-        - user
-        - product
-        - quantity
+openapi: 3.0.0                                                          
+  info:       
+    title: Test                                                           
+    version: 1.0.0                                                        
+  paths:                                                                  
+    /users:                                                               
+      x-internal: true                                                    
+      get:                                                                
+        responses:                                                        
+          "200":                                                          
+            description: OK   
