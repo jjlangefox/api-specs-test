@@ -1,20 +1,23 @@
-# Define custom rules
-rules:
-  # Rule to ensure tags are defined
-  tag-description:
-    description: All tags must have a description.
-    given: $.tags[*]
-    severity: warn
-    then:
-      field: description
-      function: truthy
-      
-  # Rule to enforce kebab-case on paths
-  paths-kebab-case:
-    description: Paths should be kebab-case.
-    given: $.paths[*]~
-    severity: error
-    then:
-      function: pattern
-      functionOptions:
-        match: "^/([a-z0-9-:]+)*$"
+  extends:                                                                
+    - spectral:oas                                                        
+                                                                          
+  rules:                                                                  
+    # Built-in function referenced by string name — this is the exact case
+    # that buildFunctionMap/resolveRuleFunctions were meant to handle.    
+    no-x-internal-in-paths:                                               
+      message: "Paths must not contain x-internal extensions"             
+      severity: warn                                                      
+      given: "$.paths[*]"                                                 
+      then:                                                               
+        field: "x-internal"                                               
+        function: falsy                                                   
+                                                                          
+    # Custom rule with no built-in function dependency — should always    
+  work.                                                                   
+    info-contact-required:                                                
+      message: "Info object must have a contact field"                    
+      severity: error                                                     
+      given: "$.info"
+      then:                                                               
+        field: contact                                                    
+        function: truthy 
