@@ -1,6 +1,3 @@
-extends:
-  - spectral:oas
-
 rules:
   # Built-in function referenced by string name — this is the exact case
   # that buildFunctionMap/resolveRuleFunctions were meant to handle.
