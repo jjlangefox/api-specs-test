@@ -1,6 +1,3 @@
-# Use built-in OpenAPI ruleset
-extends: ["spectral:oas"]
-
 # Define custom rules
 rules:
   # Rule to ensure tags are defined
