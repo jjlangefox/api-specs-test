@@ -11,7 +11,7 @@ rules:
 
   # Custom rule with no built-in function dependency — should always work.
   info-contact-required:
-    message: "Info object must have a contact field"
+    message: "Info object must have a contact field!"
     severity: error
     given: "$.info"
     then:
