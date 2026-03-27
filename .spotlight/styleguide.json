@@ -1,0 +1,47 @@
+{                                                               
+    "extends": ["spectral:oas"],                      
+    "rules": {                                                    
+      "info-contact": "warn",                                     
+      "operation-description": {                                  
+        "description": "Every operation must have a description", 
+        "given": "$.paths[*][*]",                                 
+        "severity": "warn",                                       
+        "then": {                                                 
+          "field": "description",                                 
+          "function": "truthy"                                    
+        }                                                         
+      },                                                          
+      "no-http-verbs-in-path": {                                  
+        "description": "Path segments must not contain HTTP       
+  verbs",                                                         
+        "given": "$.paths[*]~",                                   
+        "severity": "error",                                      
+        "then": {                                                 
+          "function": "pattern",                                  
+          "functionOptions": {                                    
+            "notMatch":                                           
+  "/(get|post|put|patch|delete|head|options)/i"                   
+          }                                                       
+        }                                                         
+      },                                                          
+      "response-success-required": {
+        "description": "Every operation must define at least one  
+  2xx response",                                                  
+        "given": "$.paths[*][get,post,put,patch,delete]",         
+        "severity": "warn",                                       
+        "then": {                                                 
+          "field": "responses",                                   
+          "function": "schema",                                   
+          "functionOptions": {                                    
+            "schema": {                                           
+              "type": "object",                                   
+              "patternProperties": {                              
+                "^2": {}                                          
+              },                                                  
+              "minProperties": 1                                  
+            }                                                     
+          }                                                       
+        }                                                         
+      }                                                           
+    }                                                             
+  }     
