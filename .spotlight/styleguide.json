@@ -1,5 +1,4 @@
-{                                                               
-    "extends": ["spectral:oas"],                      
+{                                                                                   
     "rules": {                                                    
       "info-contact": "warn",                                     
       "operation-description": {                                  
@@ -12,8 +11,7 @@
         }                                                         
       },                                                          
       "no-http-verbs-in-path": {                                  
-        "description": "Path segments must not contain HTTP       
-  verbs",                                                         
+        "description": "Path segments must not contain HTTP verbs",                                                         
         "given": "$.paths[*]~",                                   
         "severity": "error",                                      
         "then": {                                                 
@@ -25,8 +23,7 @@
         }                                                         
       },                                                          
       "response-success-required": {
-        "description": "Every operation must define at least one  
-  2xx response",                                                  
+        "description": "Every operation must define at least one 2xx response",                                                  
         "given": "$.paths[*][get,post,put,patch,delete]",         
         "severity": "warn",                                       
         "then": {                                                 
